@@ -85,6 +85,10 @@ npm run dev
 
 MIT
 
+<<<<<<< HEAD
 ---
 
 **Feel free to fork, contribute, or use for your own stock AI projects!**
+=======
+
+>>>>>>> b9345753fceefb3024b729b09af629b051365c70
