@@ -85,6 +85,4 @@ npm run dev
 
 MIT
 
----
 
-To use, connect https://stock-ai-frontend-gamma.vercel.app
