@@ -35,6 +35,19 @@ def get_us_stocks():
     us_stocks.to_csv('us_stocks.csv', index=False)
     print('미국 주식 종목 리스트(us_stocks.csv) 저장 완료')
 
+def get_nyse_stocks():
+    # NASDAQTrader에서 NYSE 전체 심볼 다운로드
+    url = 'https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt'
+    df = pd.read_csv(url, sep='|')
+    # NYSE만 추출
+    nyse = df[df['Exchange'] == 'N']
+    nyse = nyse[['ACT Symbol', 'Security Name']]
+    nyse.columns = ['Symbol', 'Security']
+    nyse['Market'] = 'NYSE'
+    nyse = nyse[nyse['Symbol'].str.isalpha()]  # 심볼이 영문인 것만
+    nyse.to_csv('nyse_stocks.csv', index=False)
+    print(f'NYSE 전체 종목 리스트({len(nyse)}개, nyse_stocks.csv) 저장 완료')
+
 # 한국 주식(코스피) 종목 리스트 수집 함수
 def get_kospi_stocks():
     # 네이버 금융에서 코스피 전체 페이지 반복 크롤링
@@ -65,6 +78,36 @@ def get_kospi_stocks():
     kospi.to_csv('kospi_stocks.csv', index=False)
     print(f'코스피 전체 종목 리스트({len(kospi)}개, kospi_stocks.csv) 저장 완료')
 
+def get_kosdaq_stocks():
+    # 네이버 금융에서 KOSDAQ 전체 페이지 반복 크롤링
+    import math
+    base_url = 'https://finance.naver.com/sise/sise_market_sum.naver?sosok=1&page={}'
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    r = requests.get(base_url.format(1), headers=headers)
+    soup = BeautifulSoup(r.text, 'html.parser')
+    page_last = soup.select('td.pgRR a')
+    if page_last:
+        last_page = int(page_last[0]['href'].split('=')[-1])
+    else:
+        last_page = 1
+    data = []
+    for page in range(1, last_page + 1):
+        r = requests.get(base_url.format(page), headers=headers)
+        soup = BeautifulSoup(r.text, 'html.parser')
+        table = soup.find('table', class_='type_2')
+        rows = table.find_all('tr')[2:]
+        for row in rows:
+            cols = row.find_all('td')
+            if len(cols) > 1 and cols[1].find('a'):
+                name = cols[1].get_text(strip=True)
+                code = cols[1].find('a')['href'].split('=')[-1]
+                data.append({'Symbol': code, 'Security': name, 'Market': 'KOSDAQ'})
+    kosdaq = pd.DataFrame(data)
+    kosdaq.to_csv('kosdaq_stocks.csv', index=False)
+    print(f'코스닥 전체 종목 리스트({len(kosdaq)}개, kosdaq_stocks.csv) 저장 완료')
+
 if __name__ == '__main__':
     get_us_stocks()
     get_kospi_stocks()
+    get_nyse_stocks()
+    get_kosdaq_stocks()
