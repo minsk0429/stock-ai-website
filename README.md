@@ -30,8 +30,8 @@ A professional, free, AI-powered stock analysis website supporting US (NASDAQ, S
 ## Demo  
 ## 데모
 
-- **Frontend:** [https://stock-ai-website.vercel.app](https://stock-ai-website.vercel.app)
-- **Backend API:** [https://stock-ai-website-backend.onrender.com](https://stock-ai-website-backend.onrender.com)
+- **Frontend:** [https://stock-ai-frontend-six.vercel.app/](https://stock-ai-frontend-six.vercel.app/)
+- **Backend API:** [https://stock-ai-backend-z8j9.onrender.com/](https://stock-ai-backend-z8j9.onrender.com/)
 
 ---
 
