@@ -6,7 +6,6 @@ A professional, free, AI-powered stock analysis website supporting US (NASDAQ, S
 ---
 
 ## Features  
-## 주요 기능
 
 - Search stocks by ticker or company name (US & Korea)  
   미국/한국 종목 코드 또는 회사명으로 검색
@@ -27,8 +26,7 @@ A professional, free, AI-powered stock analysis website supporting US (NASDAQ, S
 
 ---
 
-## Demo  
-## 데모
+## Demo 
 
 - **Frontend:** [https://stock-ai-frontend-six.vercel.app/](https://stock-ai-frontend-six.vercel.app/)
 - **Backend API:** [https://stock-ai-backend-z8j9.onrender.com/](https://stock-ai-backend-z8j9.onrender.com/)
@@ -36,7 +34,6 @@ A professional, free, AI-powered stock analysis website supporting US (NASDAQ, S
 ---
 
 ## How to Use  
-## 사용 방법
 
 1. Search for a stock by ticker or company name.  
    종목 코드 또는 회사명으로 검색하세요.
@@ -48,7 +45,6 @@ A professional, free, AI-powered stock analysis website supporting US (NASDAQ, S
 ---
 
 ## Tech Stack  
-## 기술 스택
 
 - **Frontend:** React, Vite, TypeScript, Recharts
 - **Backend:** FastAPI, Python, yfinance, Prophet, pandas, BeautifulSoup
@@ -56,8 +52,7 @@ A professional, free, AI-powered stock analysis website supporting US (NASDAQ, S
 
 ---
 
-## Local Development  
-## 로컬 개발 방법
+## Local Development 
 
 ```bash
 # 1. Clone the repository
@@ -83,7 +78,6 @@ npm run dev
 ---
 
 ## Data Collection  
-## 데이터 수집
 
 - Run `collect_stock_list.py` to auto-collect all stock lists (US & Korea) and generate CSVs.  
   `collect_stock_list.py`를 실행하면 미국/한국 전체 종목 리스트가 자동으로 수집되어 CSV로 저장됩니다.
@@ -91,7 +85,6 @@ npm run dev
 ---
 
 ## AI Model Notice  
-## AI 모델 안내
 
 > Prophet is a statistical time series model for forecasting based on past data patterns. Sudden events are not reflected, and errors increase for long-term forecasts.  
 > Prophet은 과거 데이터 패턴을 기반으로 미래를 예측하는 통계적 시계열 모델입니다. 갑작스러운 이벤트는 반영하지 못하며, 중장기 예측일수록 오차가 커질 수 있습니다.
